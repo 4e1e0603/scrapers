@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"regexp"
@@ -25,7 +26,10 @@ type Output struct {
 	Title    string `json:"title"`
 	Region   string `json:"region"`
 	District string `json:"district"`
+	Town     string `json:"town"`
 	Category string `json:"category"`
+	Created  string `json:"created"`
+	Viewed   string `json:"viewed"`
 }
 
 func GetRegionCode(name string) int {
@@ -60,6 +64,9 @@ func Scrape(url string, category string) {
 
 	c := colly.NewCollector()
 
+	o := Output{}
+	o.Category = category
+
 	c.OnError(func(_ *colly.Response, err error) {
 		log.Println(err)
 	})
@@ -75,9 +82,7 @@ func Scrape(url string, category string) {
 	c.OnHTML("div.item-detail-content", func(e *colly.HTMLElement) {
 		space := regexp.MustCompile(`\s+`)
 		title := strings.TrimSpace(space.ReplaceAllString(parseDetail(e.Text), " "))
-		fmt.Println("---")
-		fmt.Println(category)
-		fmt.Println(title)
+		o.Title = title
 	})
 
 	c.OnHTML(".item-table tbody", func(e *colly.HTMLElement) {
@@ -104,11 +109,23 @@ func Scrape(url string, category string) {
 			return v != ""
 		})
 
-		fmt.Println(split[0], split[1], split[2], split[3], split[4])
+		o.Region = split[0]
+		o.District = split[1]
+		o.Town = split[2]
+		o.Created = split[3]
+		o.Viewed = split[4]
 
+		result, err := json.Marshal(o)
+
+		if err != nil {
+			log.Println(err)
+		}
+
+		fmt.Println(string(result))
 	})
 
 	c.Visit(url)
+
 }
 
 func main() {
