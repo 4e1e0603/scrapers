@@ -1,8 +1,9 @@
 name: Trigger site rebuild
 
 on:
-  schedule:
-    - cron: '*/1 * * * *'
+  push
+  # schedule:
+    # - cron: '*/1 * * * *'
 
 jobs:
   build:
