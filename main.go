@@ -85,12 +85,10 @@ func clean(input string) string {
 
 func Scrape(url string, category string, limit int) {
 
-	//var region, district, town, created, viewed string
-
 	c := colly.NewCollector()
 
 	o := Output{}
-	o.Category = category // TODO Validate category, allow string and number
+	o.Category = category // FIXME Validate category, allow string and number.
 
 	c.OnError(func(_ *colly.Response, err error) {
 		log.Println(err)
@@ -154,7 +152,7 @@ func main() {
 
 	flag.StringVar(&categoryFlag, "c", "", "Select the category")
 
-	limitFlag := flag.Int("l", 1, "Limit to 24 hours (1/0)")
+	limitFlag := flag.Int("l", 1, "Limit to 24 hours (1/0)") // FIXME Beter use bool type.
 
 	flag.Parse()
 

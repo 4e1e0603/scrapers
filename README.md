@@ -2,6 +2,20 @@
 
 Scrape data from https://vsezaodvoz.cz/ website.
 
+
+## Roadmap
+
+Things to do:
+
+- Use paging (visist page 1..N).
+- Flags:
+  - region
+  - type
+  - new
+  - with_photo
+  - no_reservation
+  - district  
+
 ## Build
 
 ```powershell
@@ -22,8 +36,8 @@ go build
 ```
 
 ```
--c <name> category 
--l <1|0> limit to 24h
+-c <name> Select category 
+-l <1|0>  Should limit to 24h old?
 ```
 
 The result is redirected to standard output (`stdout`) and each line is a valid JSON object. See the [example](./output.txt). Without redirection there is a mix of result and logging messages (`stderr`) in console.
