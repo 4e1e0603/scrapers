@@ -21,11 +21,11 @@ The result is redirected to standard output (`stdout`) and each line is a valid 
 
 ### Categories
 
-- Auto-moto
+1. Auto-moto
   - Auto
   - Moto
   - Ostatní
-- Dům a zahrada
+2. Dům a zahrada
   - Kuchyň
   - Nábytek
   - Nářadí
@@ -33,7 +33,7 @@ The result is redirected to standard output (`stdout`) and each line is a valid 
   - Stavebniny
   - Vybavení
   - Zahrada
-- Elektro
+3. Elektro
   - Audio
   - Foto
   - Malé spotřebiče
@@ -41,20 +41,20 @@ The result is redirected to standard output (`stdout`) and each line is a valid 
   - Počítače
   - Velké spotřebiče
   - Video
-- Hudba a film
+4. Hudba a film
   - Aparatura
   - Film
   - Hudba
   - Hudební nástroje
   - Ostatní
 - (todo following)
-- Kanceláře a provozovny
-- Knihy a tiskoviny
-- Kosmetika
-- Oblečení
-- Ostatní
-- Potraviny
-- Pro děti
-- Sport a cestování
-- Umění a sběratelství
-- Zvířata a chovatelství
+5. Kanceláře a provozovny
+6. Knihy a tiskoviny
+7. Kosmetika
+8. Oblečení
+9. Ostatní
+10. Potraviny
+11. Pro děti
+12. Sport a cestování
+13. Umění a sběratelství
+14. Zvířata a chovatelství
