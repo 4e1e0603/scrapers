@@ -18,8 +18,9 @@ jobs:
         with:
           go-version: '1.19'
       - run: go build
-      - run: ./scrape-vsezaodvoz > output.txt
-      - run: 
+      - name: Scrape content 
+        run: |
+          ./scrape-vsezaodvoz > output.txt
       - name: Commit files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
