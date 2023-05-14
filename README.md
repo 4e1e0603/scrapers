@@ -22,32 +22,31 @@ The result is redirected to standard output (`stdout`) and each line is a valid 
 ### Categories
 
 1. Auto-moto
-  - Auto
-  - Moto
-  - Ostatní
+  1.1 Auto
+  1.2 Moto
+  1.3 Ostatní
 2. Dům a zahrada
-  - Kuchyň
-  - Nábytek
-  - Nářadí
-  - Ostatní
-  - Stavebniny
-  - Vybavení
-  - Zahrada
+  2.1 Kuchyň
+  2.2 Nábytek
+  2.3 Nářadí
+  2.4 Ostatní
+  2.5 Stavebniny
+  2.6 Vybavení
+  2.7 Zahrada
 3. Elektro
-  - Audio
-  - Foto
-  - Malé spotřebiče
-  - Ostatní
-  - Počítače
-  - Velké spotřebiče
-  - Video
+  3.1 Audio
+  3.2 Foto
+  3.3 Malé spotřebiče
+  3.4 Ostatní
+  3.5 Počítače
+  3.6 Velké spotřebiče
+  3.7 Video
 4. Hudba a film
-  - Aparatura
-  - Film
-  - Hudba
-  - Hudební nástroje
-  - Ostatní
-- (todo following)
+  4.1 Aparatura
+  4.2 Film
+  4.3 Hudba
+  4.4 Hudební nástroje
+  4.5 Ostatní
 5. Kanceláře a provozovny
 6. Knihy a tiskoviny
 7. Kosmetika
