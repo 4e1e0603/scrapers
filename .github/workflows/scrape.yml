@@ -17,3 +17,6 @@ jobs:
       - run: go version
       - run: go build
       
+      - name: Scrape webpage content 
+        run: ./scrape-vsezaodvoz > output.txt
+      
