@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/gocolly/colly"
@@ -82,7 +83,7 @@ func clean(input string) string {
 	return texts
 }
 
-func Scrape(url string, category string) {
+func Scrape(url string, category string, limit int) {
 
 	//var region, district, town, created, viewed string
 
@@ -137,8 +138,9 @@ func Scrape(url string, category string) {
 
 		fmt.Println(string(result))
 	})
-
-	url = fmt.Sprintf("%s/%s?%s", url, category, "region=14&type=1&new=1&with_photo=true&no_reservation=true&district=77")
+	// Ugly, better: https://www.alexedwards.net/blog/change-url-query-params-in-go
+	query := fmt.Sprintf("region=%s&type=%s&new=%s&with_photos=%s&no_reservation=%s&district=%s", "14", "1", strconv.Itoa(limit), "true", "true", "77")
+	url = fmt.Sprintf("%s/%s?%s", url, category, query)
 
 	c.Visit(url)
 
@@ -152,9 +154,11 @@ func main() {
 
 	flag.StringVar(&categoryFlag, "c", "", "Select the category")
 
+	limitFlag := flag.Int("l", 1, "Limit to 24 hours (1/0)")
+
 	flag.Parse()
 
 	baseURL := "https://vsezaodvoz.cz/inzeraty"
 
-	Scrape(baseURL, categoryFlag)
+	Scrape(baseURL, categoryFlag, *limitFlag)
 }

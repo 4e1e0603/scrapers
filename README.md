@@ -21,6 +21,11 @@ go build
 .\scrape-vsezaodvoz.exe -c dum-a-zahrada/kychyn > output.txt
 ```
 
+```
+-c <name> category 
+-l <1|0> limit to 24h
+```
+
 The result is redirected to standard output (`stdout`) and each line is a valid JSON object. See the [example](./output.txt). Without redirection there is a mix of result and logging messages (`stderr`) in console.
 
 ### Categories
