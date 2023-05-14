@@ -10,5 +10,8 @@ jobs:
     name: Trigger site rebuild
     runs-on: ubuntu-latest
     steps:
-      - name: cURL request
-        run: curl -X POST -d {} https://<webhook-endpoint-url>
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '^1.13.1' # The Go version to download (if necessary) and use.
+      - run: go version
