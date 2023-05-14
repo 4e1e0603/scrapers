@@ -29,7 +29,7 @@ type Output struct {
 	Town     string `json:"town"`
 	Category string `json:"category"`
 	Created  string `json:"created"`
-	Viewed   string `json:"viewed"`
+	Viewes   string `json:"viewes"`
 }
 
 func GetRegionCode(name string) int {
@@ -56,6 +56,28 @@ func filter(slice []string, f func(string) bool) []string {
 		}
 	}
 	return n
+}
+
+func clean(input string) string {
+	space := regexp.MustCompile(`\s+`)
+	texts := strings.TrimSpace(space.ReplaceAllString(parseDetail(input), " "))
+	// Time
+	texts = strings.ReplaceAll(texts, "hodinami", "hours")
+	texts = strings.ReplaceAll(texts, "sekundami", "seconds")
+	texts = strings.ReplaceAll(texts, "minutami", "minutes")
+	texts = strings.ReplaceAll(texts, "60 minutami", "1 hour")
+	texts = strings.ReplaceAll(texts, "hodinou", "1 hour")
+	texts = strings.ReplaceAll(texts, "včera", "1 day")
+	// Other
+	texts = strings.ReplaceAll(texts, "(mapa)", "")
+	texts = strings.ReplaceAll(texts, "Kraj", "")
+	texts = strings.ReplaceAll(texts, "Okres", "")
+	texts = strings.ReplaceAll(texts, "Město", "")
+	texts = strings.ReplaceAll(texts, "Vloženo", "")
+	texts = strings.ReplaceAll(texts, "Zobrazeno", "")
+	texts = strings.ReplaceAll(texts, "před", "")
+
+	return texts
 }
 
 func Scrape(url string, category string) {
@@ -86,19 +108,8 @@ func Scrape(url string, category string) {
 	})
 
 	c.OnHTML(".item-table tbody", func(e *colly.HTMLElement) {
-		// region, district, town, created, viewed = parseDetail(e.Text)
-		space := regexp.MustCompile(`\s+`)
-		texts := strings.TrimSpace(space.ReplaceAllString(parseDetail(e.Text), " "))
 
-		texts = strings.ReplaceAll(texts, "(mapa)", "")
-		texts = strings.ReplaceAll(texts, "hodinami", "hodin")
-		texts = strings.ReplaceAll(texts, "minutami", "minut")
-		texts = strings.ReplaceAll(texts, "Kraj", "")
-		texts = strings.ReplaceAll(texts, "Okres", "")
-		texts = strings.ReplaceAll(texts, "Město", "")
-		texts = strings.ReplaceAll(texts, "Vloženo", "")
-		texts = strings.ReplaceAll(texts, "Zobrazeno", "")
-		texts = strings.ReplaceAll(texts, "před", "")
+		texts := clean(e.Text)
 
 		split := strings.Split(texts, ":")
 		for i, s := range split {
@@ -113,7 +124,7 @@ func Scrape(url string, category string) {
 		o.District = split[1]
 		o.Town = split[2]
 		o.Created = split[3]
-		o.Viewed = split[4]
+		o.Viewes = strings.ReplaceAll(split[4], "x", "")
 
 		result, err := json.Marshal(o)
 
@@ -124,13 +135,15 @@ func Scrape(url string, category string) {
 		fmt.Println(string(result))
 	})
 
+	url = fmt.Sprintf("%s/%s?%s", url, "dum-a-zahrada", "region=14&type=1&new=1&with_photo=true&no_reservation=true&district=77")
+
 	c.Visit(url)
 
 }
 
 func main() {
 
-	url := "https://vsezaodvoz.cz/inzeraty/dum-a-zahrada?region=14&type=1&new=1&with_photo=true&no_reservation=true&district=77"
+	baseURL := "https://vsezaodvoz.cz/inzeraty"
 
-	Scrape(url, "dum-a-zahrada")
+	Scrape(baseURL, "dum-a-zahrada")
 }

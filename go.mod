@@ -1,4 +1,4 @@
-module github.com/groundf/scraper-vsezaodvoz.cz
+module github.com/groundf/scrape-vsezaodvoz
 
 go 1.19
 
