@@ -1,6 +1,6 @@
 # scrape-vsezaodvoz
 
-Scrape data from https://vsezaodvoz.cz/ website.
+Scrape data from <https://vsezaodvoz.cz/> website.
 
 ## Build
 
@@ -17,43 +17,53 @@ scrape-vsezaodvoz.exe
 .\scrape-vsezaodvoz.exe > output.txt
 ```
 
-The result is redirected to standard output (`stdout`) and each line is a valid JSON object. See the [example](./output.txt). Without redirection there is a mix of result and logging messages (`stderr`) in console.
+The result is redirected to standard output (`stdout`) and each line is a valid JSON objec<li>See the [example](./output.txt). Without redirection there is a </li>mix of result and logging messages (`stderr`) in console.
 
 ### Categories
 
-1. Auto-moto
-    1. Auto
-    2. Moto
-    3. Ostatní
-2. Dům a zahrada
-    1. Kuchyň
-    2. Nábytek
-    3. Nářadí
-    4. Ostatní
-    5. Stavebniny
-    6. Vybavení
-    7. Zahrada
-3. Elektro
-    1. Audio
-    2. Foto
-    3. Malé spotřebiče
-    4. Ostatní
-    5. Počítače
-    6. Velké spotřebiče
-    7. Video
-4. Hudba a film
-    1. Aparatura
-    2. Film
-    3. Hudba
-    4. Hudební nástroje
-    5. Ostatní
-5. Kanceláře a provozovny
-6. Knihy a tiskoviny
-7. Kosmetika
-8. Oblečení
-9. Ostatní
-10. Potraviny
-11. Pro děti
-12. Sport a cestování
-13. Umění a sběratelství
-14.  Zvířata a chovatelství
+<ol>
+    <li>Auto-moto</li>
+    <ol>
+        <li>Auto</li>
+        <li>Moto</li>
+        <li>Ostatní</li>
+    </ol>
+    <li>Dům a zahrada</li>
+    <ol>
+        <li>Kuchyň</li>
+        <li>Nábytek</li>
+        <li>Nářadí</li>
+        <li>Ostatní</li>
+        <li>Stavebniny</li>
+        <li>Vybavení</li>
+        <li>Zahrada</li>
+    </ol>
+    <li>Elektro</li>
+    <ol>
+        <li>Audio</li>
+        <li>Foto</li>
+        <li>Malé spotřebiče</li>
+        <li>Ostatní</li>
+        <li>Počítače</li>
+        <li>Velké spotřebiče</li>
+        <li>Video</li>
+    </ol>
+    <li>Hudba a film</li>
+    <ol>
+        <li>Aparatura</li>
+        <li>Film</li>
+        <li>Hudba</li>
+        <li>Hudební nástroje</li>
+        <li>Ostatní</li>
+    </ol>
+    <li>Kanceláře a provozovny</li>
+    <li>Knihy a tiskoviny</li>
+    <li>Kosmetika</li>
+    <li>Oblečení</li>
+    <li>Ostatní</li>
+    <li>Potraviny</li>
+    <li>Pro děti</li>
+    <li>Sport a cestování</li>
+    <li>Umění a sběratelství</li>
+    <li> Zvířata a chovatelství</li>
+</ol>
