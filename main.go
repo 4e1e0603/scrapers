@@ -30,6 +30,7 @@ type Output struct {
 	Category string `json:"category"`
 	Created  string `json:"created"`
 	Viewes   string `json:"viewes"`
+	Link     string `json:"link"`
 }
 
 func GetRegionCode(name string) int {
@@ -95,6 +96,7 @@ func Scrape(url string, category string) {
 
 	c.OnResponse(func(r *colly.Response) {
 		log.Println("Visited", r.Request.URL)
+		o.Link = fmt.Sprintf("%s%s", r.Request.URL.Host, r.Request.URL.Path)
 	})
 
 	c.OnHTML("h3.product-inline-title a[href]", func(e *colly.HTMLElement) {
