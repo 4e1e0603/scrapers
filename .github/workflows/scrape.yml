@@ -1,23 +1,38 @@
-name: scrape
+name: Trigger site rebuild on a CRON schedule
 
 on:
   schedule:
-    - cron: "*/5 * * * *" # runs every 5 minutes
-
+    - cron: '*/5 * * * *'
 jobs:
   build:
+    name: Trigger site rebuild
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go: ['1.19']
-    name: Go ${{ matrix.go }} sample
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup go
-        uses: actions/setup-go@v4
-        with:
-          go-version: ${{ matrix.go }}
-      - run: go run hello.go      
+      - name: cURL request
+        # Hit the webhook endpoint to rebuild  from the "main" branch
+        run: curl -X POST -d {} https://<webhook-endpoint-url>
+
+# name: scrape
+
+# on:
+#   schedule:
+#     - cron: "*/5 * * * *" # runs every 5 minutes
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     # strategy:
+    #   matrix:
+    #     go: ['1.19']
+    # name: Go ${{ matrix.go }} sample
+    # steps:
+    #   - uses: actions/checkout@v3
+    #   - name: Setup go
+    #     uses: actions/setup-go@v4
+    #     with:
+    #       go-version: ${{ matrix.go }}
+      
+    #   - run: go run hello.go      
       # - name: Setup Go compiler
       # - uses: actions/setup-go@v4
       #   with:
