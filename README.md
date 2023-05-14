@@ -12,41 +12,47 @@ go build
 
 ## Usage
 
+### Examples
+
 ```powershell
-scrape-vsezaodvoz.exe
+.\scrape-vsezaodvoz.exe
 .\scrape-vsezaodvoz.exe > output.txt
+.\scrape-vsezaodvoz.exe -c dum-a-zahrada > output.txt
+.\scrape-vsezaodvoz.exe -c dum-a-zahrada/kychyn > output.txt
 ```
 
 The result is redirected to standard output (`stdout`) and each line is a valid JSON object. See the [example](./output.txt). Without redirection there is a mix of result and logging messages (`stderr`) in console.
 
 ### Categories
 
-- Auto-moto (1)
+Select category from the list bellow e.g `dum-a-zahrada` or with subcategory `dum-a-zahrada/kuchyn`
+
+- Auto-moto (1 / auto-moto)
   - Auto
-  - Moto
-  - Ostatní
-- Dům a zahrada (2)
-  - Kuchyň
-  - Nábytek
-  - Nářadí
-  - Ostatní
-  - Stavebniny
-  - Vybavení
-  - Zahrada
+  - Moto  
+  - Ostatní (1.3 / ostatni)
+- Dům a zahrada (2 /dum-a-zahrada)
+  - Kuchyň (2.1 / kuchyn)
+  - Nábytek (2.2 / nabytek)
+  - Nářadí (2.3)
+  - Ostatní (2.4)
+  - Stavebniny (2.5)
+  - Vybavení (2.6)
+  - Zahrada (2.7)
 - Elektro (3)
-  - Audio
-  - Foto
-  - Malé spotřebiče
+  - Audio (3.1)
+  - Foto (3.2)
+  - Malé spotřebiče (3.3)
 - Ostatní (4)
-  - Počítače
-  - Velké spotřebiče
-  - Video
+  - Počítače (4.1)
+  - Velké spotřebiče (4.2)
+  - Video (4.3)
 - Hudba a film (5)
-  - Aparatura
-  - Film
-  - Hudba
-  - Hudební nástroje
-  - Ostatní
+  - Aparatura (5.1)
+  - Film (5.2)
+  - Hudba (5.3)
+  - Hudební nástroje (5.4)
+  - Ostatní (5.5)
 - Kanceláře a provozovny (6)
 - Knihy a tiskoviny (7)
 - Kosmetika (8)

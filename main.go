@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"log"
 	"regexp"
@@ -88,7 +89,7 @@ func Scrape(url string, category string) {
 	c := colly.NewCollector()
 
 	o := Output{}
-	o.Category = category
+	o.Category = category // TODO Validate category, allow string and number
 
 	c.OnError(func(_ *colly.Response, err error) {
 		log.Println(err)
@@ -137,15 +138,23 @@ func Scrape(url string, category string) {
 		fmt.Println(string(result))
 	})
 
-	url = fmt.Sprintf("%s/%s?%s", url, "dum-a-zahrada", "region=14&type=1&new=1&with_photo=true&no_reservation=true&district=77")
+	url = fmt.Sprintf("%s/%s?%s", url, category, "region=14&type=1&new=1&with_photo=true&no_reservation=true&district=77")
 
 	c.Visit(url)
 
 }
 
+var (
+	categoryFlag string
+)
+
 func main() {
+
+	flag.StringVar(&categoryFlag, "c", "", "Select the category")
+
+	flag.Parse()
 
 	baseURL := "https://vsezaodvoz.cz/inzeraty"
 
-	Scrape(baseURL, "dum-a-zahrada")
+	Scrape(baseURL, categoryFlag)
 }

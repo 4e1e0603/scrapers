@@ -20,3 +20,5 @@ jobs:
       - name: Scrape webpage content 
         run: ./scrape-vsezaodvoz > output.txt
       
+      - name: Send email
+        run: 
